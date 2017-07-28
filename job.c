@@ -27,7 +27,6 @@ void destroy_job(job j) {
 // run
 void run_job(job j) {
   j->fn(j->arg);
-  destroy_job(j);
 };
 // getter
 job getNextJob(job j) {

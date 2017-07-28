@@ -3,8 +3,8 @@
  * Date:     27 Jul 17
  * Email:    jerry153fish@gmail.com
  **********************************/
-#ifdef THREADPOOL_H
-#define THREADPOOL_H
+#ifndef J_THREADPOOL_H
+#define J_THREADPOOL_H
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -13,7 +13,7 @@ extern "C" {
 
 // simple declare universal struct
 struct thpool_s;
-typedef thpool_s *threadpool;
+typedef struct thpool_s *threadpool;
 
 // simple declare a point ot function return void
 typedef void (*pool_fn)(void *);
@@ -22,11 +22,11 @@ typedef void (*pool_fn)(void *);
 threadpool threadpool_init(int thread_size);
 
 // add function to pool
-int pool_add_fn(threadpool pool, pool_fn fn, void *arg);
+void pool_add_fn(threadpool tp, pool_fn fn, void *arg);
 // destroy
-int pool_destroy(threadpool pool);
+void pool_destroy(threadpool tp);
 
 #ifdef __cplusplus
 }
-#endi
+#endif
 #endif

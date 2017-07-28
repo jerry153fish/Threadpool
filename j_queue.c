@@ -38,6 +38,8 @@ j_queue q_init() {
       free(q);
       return NULL;
     }
+  } else {
+    return NULL;
   }
   return q;
 };
@@ -95,7 +97,7 @@ void *q_get(j_queue q) {
 };
 // destroy
 void destroy_q(j_queue q) {
-  while(getNextJob(q->front)) {
+  while(q->front) {
     destroy_job(q->front);
     q->front = getNextJob(q->front);
   }
